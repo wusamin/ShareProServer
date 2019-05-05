@@ -1,0 +1,54 @@
+@import 'https://fonts.googleapis.com/css?family=Cinzel';
+
+body { padding-top: 60px; }
+
+/*背景画像の設定をする*/
+.bg{
+  background: url("../images/bg/Goprohero5actioncamerapoweredon.jpg") no-repeat center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.bgImage{
+  background: url("../bg/Goprohero5actioncamerapoweredon.jpg") no-repeat center;
+  background-size: cover;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;/*ブラー効果でボヤけた部分を非表示*/
+  background-attachment: fixed;
+}
+
+/*:beforeにぼかし効果を設定する*/
+.bgImage:before{
+  content: '';
+  background: inherit;/*.bgImageで設定した背景画像を継承する*/
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  position: absolute;
+  /*ブラー効果で画像の端がボヤけた分だけ位置を調整*/
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: -1;/*重なり順序を一番下にしておく*/
+}
+
+.headerText{
+    font-size: 34px;
+}
+
+.cardTopImg{
+    width: 120px;
+    height: 60px;
+}
+
+.cardBodyText{
+  font-size: 14px; 
+}
+
+.card{
+  background-color: rgba(192, 192, 192, 0.8);
+}
