@@ -33,7 +33,7 @@ class ShareProController {
     @RequestMapping("/list")
     fun viewList(mav: ModelAndView): ModelAndView {
 
-        mav.addObject("pictures", service.getAllPicture())
+        mav.addObject("pictures", service.findAllPicture())
         mav.viewName = "html/listed"
         return mav
     }

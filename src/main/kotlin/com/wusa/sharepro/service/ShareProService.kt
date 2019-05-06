@@ -1,7 +1,10 @@
 package com.wusa.sharepro.service
 
 import com.wusa.sharepro.data.ListData
+import com.wusa.sharepro.data.ShareProEntity
 import com.wusa.sharepro.data.uploadForm
+import com.wusa.sharepro.repository.`interface`.ShareProRepositoryInterface
+import org.springframework.context.annotation.ComponentScan
 import org.springframework.stereotype.Service
 import org.springframework.web.multipart.MultipartFile
 import java.nio.file.Files
@@ -10,7 +13,33 @@ import java.time.LocalDate
 import java.util.*
 
 @Service
-class ShareProService {
+@ComponentScan("repository/interface")
+class ShareProService(private val repository:
+                      ShareProRepositoryInterface) {
+    fun findAllPicture(): List<ShareProEntity> {
+        val pictures = mutableListOf<ShareProEntity>()
+        repository.findAll()
+            .forEach({
+                val path = Paths.get(it.image)
+
+                val fileByte = Files.readAllBytes(path)
+                val base64Bytes = Base64.getEncoder()
+                    .encodeToString(fileByte)
+
+                val sb = StringBuffer()
+
+                sb.append("data:")
+                    .append(Files.probeContentType(path))
+                    .append(";base64,")
+                    .append(base64Bytes)
+                it.image = sb.toString()
+
+                pictures.add(it)
+            })
+
+        return pictures
+    }
+
     fun getAllPicture(): Collection<ListData> {
 
         val dataList = mutableListOf<ListData>()
