@@ -7,9 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>list-SharePro</title>
     <!--CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../static/css/main.css" th:href="@{/css/main.css}">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="../../static/css/main.css"
+          th:href="@{/css/main.css}">
     <!--JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -25,182 +28,34 @@
 
 <body class="bg">
 <div class="fixed-top bg-primary clear-fix">
-    <button class="headerText text-white ml-1 bg-transparent btn py-0 my-0"
-            onclick="location.href='./listed.html'">SharePro
-    </button>
-    <input type="button" class="float-right btn btn-light mt-2 mr-3" onclick="location.href='./upload.html'"
-           value="アップロード">
+    <form action="#" th:action="@{/sharepro/list}" class="d-inline-block">
+        <button class="headerText text-white ml-1 bg-transparent btn py-0 my-0">
+            SharePro
+        </button>
+    </form>
+    <form action="#" th:action="@{/sharepro/uploadform}"
+          class="d-inline-block float-right">
+        <input type="submit" class="btn btn-light mt-2 mr-3" value="アップロード">
+    </form>
 </div>
 
 <div class="container-fluid mt-3">
     <div class="row mx-2">
-        <div class="col-md-3 col-sm-6 mb-w">
+        <div th:each="picture : ${pictures}" class="col-md-3 col-sm-6 mb-3">
             <div class="card">
-                <img class="card-img-top" src="../../static/images/items/test.jpg" alt="image...">
+                <img class="card-img-top"
+                     src="../../static/images/items/test.jpg" alt="image..."
+                     th:src="*{picture.image}">
                 <div class="card-body py-2 px-1 text-center cardBodyText card-subtitle">
-                    <p class="mb-1 mt-1">Alice</p>
-                    <p class="mb-1">秩父湖</p>
-                    <p class="mb-2">2019/4/1</p>
+                    <p class="mb-1 mt-1" th:text="*{picture.contributor}">
+                        Alice</p>
+                    <p class="mb-1" th:text="*{picture.location}">秩父湖</p>
+                    <p class="mb-2" th:text="*{picture.day}">2019/4/1</p>
                     <div class="d-inline-block">
-                        <input type="button" class="btn btn-primary active" value="Download">
-                        <input type="button" class="btn btn-info active" value="...">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="card">
-                <img class="card-img-top" src="../../static/bg/Goprohero5actioncamerapoweredon.jpg" alt="image...">
-                <div class="card-body py-2 px-1 text-center cardBodyText card-subtitle">
-                    <p class="mb-1 mt-1">Bob</p>
-                    <p class="mb-1">秩父湖</p>
-                    <p class="mb-2">2019/4/1</p>
-                    <div class="d-inline-block">
-                        <input type="button" class="btn btn-primary active" value="download">
-                        <input type="button" class="btn btn-info active" value="...">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="card">
-                <img class="card-img-top" src="./static/items/test2.jpg" alt="image...">
-                <div class="card-body py-2 px-1 text-center cardBodyText card-subtitle">
-                    <p class="mb-1 mt-1">Carol</p>
-                    <p class="mb-1">秩父湖</p>
-                    <p class="mb-2">2019/4/1</p>
-                    <div class="d-inline-block">
-                        <input type="button" class="btn btn-primary active" value="download">
-                        <input type="button" class="btn btn-info active" value="...">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="card">
-                <img class="card-img-top" src="./static/bg/Goprohero5actioncamerapoweredon.jpg" alt="image...">
-                <div class="card-body py-2 px-1 text-center cardBodyText card-subtitle">
-                    <p class="mb-1 mt-1">Dave</p>
-                    <p class="mb-1">秩父湖</p>
-                    <p class="mb-2">2019/4/1</p>
-                    <div class="d-inline-block">
-                        <input type="button" class="btn btn-primary active" value="download">
-                        <input type="button" class="btn btn-info active" value="...">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-w">
-            <div class="card">
-                <img class="card-img-top" src="./static/items/test.jpg" alt="image...">
-                <div class="card-body py-2 px-1 text-center cardBodyText card-subtitle">
-                    <p class="mb-1 mt-1">Alice</p>
-                    <p class="mb-1">秩父湖</p>
-                    <p class="mb-2">2019/4/1</p>
-                    <div class="d-inline-block">
-                        <input type="button" class="btn btn-primary active" value="download">
-                        <input type="button" class="btn btn-info active" value="...">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="card">
-                <img class="card-img-top" src="./static/bg/Goprohero5actioncamerapoweredon.jpg" alt="image...">
-                <div class="card-body py-2 px-1 text-center cardBodyText card-subtitle">
-                    <p class="mb-1 mt-1">Bob</p>
-                    <p class="mb-1">秩父湖</p>
-                    <p class="mb-2">2019/4/1</p>
-                    <div class="d-inline-block">
-                        <input type="button" class="btn btn-primary active" value="Download">
-                        <input type="button" class="btn btn-info active" value="...">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="card">
-                <img class="card-img-top" src="./static/items/test.jpg" alt="image...">
-                <div class="card-body py-2 px-1 text-center cardBodyText card-subtitle">
-                    <p class="mb-1 mt-1">Carol</p>
-                    <p class="mb-1">秩父湖</p>
-                    <p class="mb-2">2019/4/1</p>
-                    <div class="d-inline-block">
-                        <input type="button" class="btn btn-primary active" value="download">
-                        <input type="button" class="btn btn-info active" value="...">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="card">
-                <img class="card-img-top" src="./static/bg/Goprohero5actioncamerapoweredon.jpg" alt="image...">
-                <div class="card-body py-2 px-1 text-center cardBodyText card-subtitle">
-                    <p class="mb-1 mt-1">Dave</p>
-                    <p class="mb-1">秩父湖</p>
-                    <p class="mb-2">2019/4/1</p>
-                    <div class="d-inline-block">
-                        <input type="button" class="btn btn-primary active" value="download">
-                        <input type="button" class="btn btn-info active" value="...">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-w">
-            <div class="card">
-                <img class="card-img-top" src="./static/items/test.jpg" alt="image...">
-                <div class="card-body py-2 px-1 text-center cardBodyText card-subtitle">
-                    <p class="mb-1 mt-1">Alice</p>
-                    <p class="mb-1">秩父湖</p>
-                    <p class="mb-2">2019/4/1</p>
-                    <div class="d-inline-block">
-                        <input type="button" class="btn btn-primary active" value="download">
-                        <input type="button" class="btn btn-info active" value="...">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="card">
-                <img class="card-img-top" src="./static/bg/Goprohero5actioncamerapoweredon.jpg" alt="image...">
-                <div class="card-body py-2 px-1 text-center cardBodyText card-subtitle">
-                    <p class="mb-1 mt-1">Bob</p>
-                    <p class="mb-1">秩父湖</p>
-                    <p class="mb-2">2019/4/1</p>
-                    <div class="d-inline-block">
-                        <input type="button" class="btn btn-primary active" value="download">
-                        <input type="button" class="btn btn-info active" value="...">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="card">
-                <img class="card-img-top" src="./static/items/test2.jpg" alt="image...">
-                <div class="card-body py-2 px-1 text-center cardBodyText card-subtitle">
-                    <p class="mb-1 mt-1">Carol</p>
-                    <p class="mb-1">秩父湖</p>
-                    <p class="mb-2">2019/4/1</p>
-                    <div class="d-inline-block">
-                        <input type="button" class="btn btn-primary active" value="download">
-                        <input type="button" class="btn btn-info active" value="...">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="card">
-                <img class="card-img-top" src="./static/bg/Goprohero5actioncamerapoweredon.jpg" alt="image...">
-                <div class="card-body py-2 px-1 text-center cardBodyText card-subtitle">
-                    <p class="mb-1 mt-1">Dave</p>
-                    <p class="mb-1">秩父湖</p>
-                    <p class="mb-2">2019/4/1</p>
-                    <div class="d-inline-block">
-                        <input type="button" class="btn btn-primary active" value="download">
-                        <input type="button" class="btn btn-info active" value="...">
+                        <input type="button" class="btn btn-primary active"
+                               value="Download">
+                        <input type="button" class="btn btn-info active"
+                               value="...">
                     </div>
                 </div>
             </div>

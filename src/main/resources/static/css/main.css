@@ -4,7 +4,7 @@ body { padding-top: 60px; }
 
 /*背景画像の設定をする*/
 .bg{
-  background: url("../images/bg/Goprohero5actioncamerapoweredon.jpg") no-repeat center;
+  background: url("../images/bg/bg.jpg") no-repeat center;
   background-size: cover;
   background-attachment: fixed;
 }
