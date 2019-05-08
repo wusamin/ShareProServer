@@ -45,7 +45,10 @@
             <div class="card">
                 <img class="card-img-top"
                      src="../../static/images/items/test.jpg" alt="image..."
-                     th:src="*{picture.image}">
+                     th:src="*{picture.image}"
+                     data-toggle="modal" data-target="#exampleModal"
+                     th:data-target="'#A' + *{picture.id}"
+                >
                 <div class="card-body py-2 px-1 text-center cardBodyText card-subtitle">
                     <p class="mb-1 mt-1" th:text="*{picture.contributor}">
                         Alice</p>
@@ -55,7 +58,28 @@
                         <input type="button" class="btn btn-primary active"
                                value="Download">
                         <input type="button" class="btn btn-info active"
-                               value="...">
+                               value="..."
+                               data-toggle="modal" data-target="#exampleModal"
+                               th:data-target="'#A' + *{picture.id}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="exampleModal"
+                 th:id="'A' + *{picture.id}"
+                 tabindex="-1"
+                 role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <img class="card-img-top"
+                                 src="../../static/images/items/test.jpg"
+                                 alt="image..."
+                                 th:src="*{picture.image}"
+                                 data-dismiss="modal"
+                            >
+                        </div>
                     </div>
                 </div>
             </div>

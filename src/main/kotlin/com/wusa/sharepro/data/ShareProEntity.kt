@@ -3,7 +3,6 @@ package com.wusa.sharepro.data
 import java.time.LocalDate
 import java.util.*
 import javax.persistence.Entity
-import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.Table
 
@@ -11,13 +10,12 @@ import javax.persistence.Table
 @Table(name = "t_sharepro")
 class ShareProEntity {
     @Id
-    @GeneratedValue
-    val id: Long? = null;
-    val contributor: String? = null
-    val location: String? = null
-    val uploadDay: LocalDate? = null
+    var id: Long? = null;
+    var contributor: String? = null
+    var location: String? = null
+    var uploadDay: LocalDate? = null
     var image: String? = null
-    val comment: String? = null
-    val ins_date: Date? = null
-    val upd_date: Date? = null
+    var comment: String? = null
+    var ins_date: Date? = null
+    var upd_date: Date? = null
 }
